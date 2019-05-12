@@ -1,0 +1,19 @@
+<h1><%= @dog.name %></h1>
+<h4>Breed: <%= @dog.breed %></h4>
+<h4>Age: <%= @dog.age %></h4>
+<h4>Spayed/Neutered?
+  <% if @dog.fixed == true %>
+    Yes
+  <% else %>
+    No
+  <% end %>
+</h4>
+<h4>Parent(s): <%= @dog.owner.owner_name %> </h4>
+<form method="POST" action="/dogs/<%= @dog.id %>/edit">
+  <input type="hidden" name="_method" value="EDIT" />
+  <input type="submit" value="Edit">
+</form>
+<form method="POST" action="/dogs/<%= @dog.id %>">
+    <input type="hidden" name="_method" value="DELETE" />
+    <input type="submit" value="Delete">
+</form>
