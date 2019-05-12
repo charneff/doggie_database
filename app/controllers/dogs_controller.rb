@@ -40,9 +40,19 @@ class DogsController < ApplicationController
       @dog = Dog.find_by_id(params[:id])
       redirect "/dogs/#{@dog.id}/edit"
     end
-
   end
 
+  post '/dogs/new' do
+    if !logged_in?
+      redirect "/login"
+    else
+      redirect "/dogs/new"
+    end
+  end
+
+  post '/dogs/all' do
+    redirect "/dogs"
+  end
 
   post '/dogs' do
     dog = Dog.new(name: params["name"],
