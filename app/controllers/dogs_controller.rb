@@ -29,9 +29,14 @@ class DogsController < ApplicationController
       redirect "/login"
     else
       @dog = Dog.find_by_id(params[:id])
-      erb :"/dogs/edit"
+      if @dog.owner.id == @current_user.id
+        erb :"/dogs/edit"
+      else
+        redirect "/login"
+      end
     end
   end
+  
 
   post '/dogs/:id/edit' do
     if !logged_in?

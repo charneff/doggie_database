@@ -11,12 +11,15 @@ class OwnersController < ApplicationController
 
   get '/owners/:id' do
     @owner = Owner.find_by_id(params[:id])
-
     if @owner
-      erb :"/owners/show"
+      erb :"owners/show"
     else
       redirect "/owners"
     end
+  end
+
+  post '/owners/all' do
+    redirect "/owners"
   end
 
 
@@ -31,5 +34,4 @@ class OwnersController < ApplicationController
       erb :"owners/new"
     end
   end
-
 end
