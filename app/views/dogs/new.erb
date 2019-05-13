@@ -4,14 +4,17 @@
 <form  method="POST" action="/dogs" >
     <input type="hidden" name="title" value="0" />
 
-    Name: <input name="name" type="text">
+    <h3> Name: <input name="name" type="text">
     <br><br>
     Breed: <input name="breed" type="text">
     <br><br>
     Age: <input name="age" type="text">
     <br><br>
-    Spayed/Neutered?: <input type="checkbox" name="fixed" >
-    <br><br>
+    Spayed/Neutered?:
+    <input type="checkbox" name="fixed"></h3>
+    <h3>Sex:</h3>
+    <h4><input type="radio" name="gender" value="male"> Male<br>
+    <input type="radio" name="gender" value="female"> Female</h4><br>
 
     <input type="submit" value="Create">
 </form>

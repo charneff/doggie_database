@@ -5,21 +5,29 @@
 
 <% end %>
 
-
-<h1>Editing <%= @dog.name %></h1>
+<h2>Editing</h2>
+<h1><%= @dog.name %></h1>
 
 <form method="POST" action="/dogs/<%= @dog.id %>">
-    <input id="hidden" type="hidden" name="_method" value="patch" />
+    <h3><input id="hidden" type="hidden" name="_method" value="patch" />
     Name: <input name="name" type="text" value="<%= @dog.name %>">
     <br><br>
     Breed: <input name="breed" type="text" value="<%= @dog.breed%>">
     <br><br>
     Age: <input name="age" type="text" value="<%= @dog.age %>">
     <br><br>
-    Spayed/Neutered? <input type="checkbox" name="fixed" checked="<% @dog.fixed %>" >
-    <br><br>
-    <input type="submit" value="Edit">
+    Spayed/Neutered? <input type="checkbox" name="fixed"
+    <% if @dog.fixed %>
+    checked
+    <% end %>></h3>
+    <h3>Gender:</h3>
+    <input type="radio" name="gender" value="male"
+    <% if @dog.gender == "male" %>
+    checked
+    <% end %>> Male<br>
+    <input type="radio" name="gender" value="female"
+    <% if @dog.gender == "female" %>
+    checked
+    <% end %>> Female<br><br>
+    <input type="submit" value="Make Changes">
 </form>
-
-
-<!-- Add code here to display if spayed or not -->

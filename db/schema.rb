@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2019_05_10_205022) do
     t.string "breed"
     t.string "age"
     t.boolean "fixed"
+    t.string "gender"
     t.integer "owner_id"
   end
 

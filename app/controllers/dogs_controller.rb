@@ -36,7 +36,7 @@ class DogsController < ApplicationController
       end
     end
   end
-  
+
 
   post '/dogs/:id/edit' do
     if !logged_in?
@@ -64,6 +64,7 @@ class DogsController < ApplicationController
       breed: params["breed"],
       age: params["age"],
       fixed: params["fixed"],
+      gender: params["gender"],
       owner: current_user)
 
     if dog.save
@@ -76,7 +77,7 @@ class DogsController < ApplicationController
   patch '/dogs/:id' do
       @dog = Dog.find_by_id(params["id"])
 
-      if @dog.update(name: params["name"], breed: params["breed"], age: params["age"], fixed: params["fixed"])
+      if @dog.update(name: params["name"], breed: params["breed"], age: params["age"], fixed: params["fixed"], gender: params["gender"])
           redirect "/dogs/#{@dog.id}"
       else
           erb :"/dogs/edit"

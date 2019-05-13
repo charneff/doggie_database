@@ -8,6 +8,7 @@
     No
   <% end %>
 </h4>
+<h4>Gender: <%= @dog.gender.capitalize %></h4>
 <h4>Parent(s): <%= @dog.owner.owner_name %> </h4>
 <form method="POST" action="/dogs/all">
   <input type="hidden" name="_method" value="ALL" />
