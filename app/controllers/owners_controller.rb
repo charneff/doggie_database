@@ -24,14 +24,18 @@ class OwnersController < ApplicationController
 
 
   post '/owners' do
-    @owner = Owner.new
-    @owner.owner_name = params[:owner_name]
-    @owner.email = params[:email]
-    @owner.password = params[:password]
-    if @owner.save
-      redirect '/login'
+    if params["password"] == params["confirm_password"] && params["password"].size >= 8
+      @owner = Owner.new
+      @owner.owner_name = params[:owner_name]
+      @owner.email = params[:email]
+      @owner.password = params[:password]
+      if @owner.save
+        redirect '/login'
+      else
+        erb :"owners/new"
+      end
     else
-      erb :"owners/new"
+      redirect "/signup"
     end
   end
 end

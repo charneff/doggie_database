@@ -1,9 +1,9 @@
 <h1>Register a New Dog</h1>
 
+<%= "Must complete all fields" if @dog && @dog.errors.any? %>
+
 
 <form  method="POST" action="/dogs" >
-    <input type="hidden" name="title" value="0" />
-
     <h3> Name: <input name="name" type="text">
     <br><br>
     Breed: <input name="breed" type="text">
@@ -17,4 +17,7 @@
     <input type="radio" name="gender" value="female"> Female</h4><br>
 
     <input type="submit" value="Create">
+</form>
+<form method="POST" action="/logout">
+  <input type="submit" value="Log Out">
 </form>

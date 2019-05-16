@@ -11,14 +11,15 @@
 <h4>Gender: <%= @dog.gender.capitalize %></h4>
 <h4>Parent(s): <%= @dog.owner.owner_name %> </h4>
 <form method="POST" action="/dogs/all">
-  <input type="hidden" name="_method" value="ALL" />
   <input type="submit" value="All Dogs">
 </form>
 <form method="POST" action="/dogs/<%= @dog.id %>/edit">
-  <input type="hidden" name="_method" value="EDIT" />
-  <input type="submit" value="Edit">
+  <input type="submit" value="Edit <%= @dog.name %>">
 </form>
 <form method="POST" action="/dogs/<%= @dog.id %>">
-    <input type="hidden" name="_method" value="DELETE" />
-    <input type="submit" value="Delete">
+    <input type="hidden" id="hidden" name="_method" value="DELETE" />
+    <input type="submit" value="Delete <%= @dog.name %>">
+</form>
+<form method="POST" action="/logout">
+  <input type="submit" value="Log Out">
 </form>

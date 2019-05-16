@@ -60,17 +60,17 @@ class DogsController < ApplicationController
   end
 
   post '/dogs' do
-    dog = Dog.new(name: params["name"],
+    @dog = Dog.new(name: params["name"],
       breed: params["breed"],
       age: params["age"],
       fixed: params["fixed"],
       gender: params["gender"],
       owner: current_user)
 
-    if dog.save
-      redirect "/dogs/#{dog.id}"
+    if @dog.save
+      redirect "/dogs/#{@dog.id}"
     else
-      redirect "dogs/new"
+      redirect "/dogs/new"
     end
   end
 
@@ -87,10 +87,15 @@ class DogsController < ApplicationController
   delete "/dogs/:id" do
        @dog = Dog.find_by_id(params["id"])
 
-       if @dog.destroy
+       if @dog.owner.id == current_user.id
+         if @dog.destroy
            redirect "/dogs"
-       else
+         else
            redirect "/dogs/#{@dog.id}"
+         end
+       else
+         redirect "/login"
        end
+
    end
 end

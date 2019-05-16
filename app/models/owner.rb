@@ -4,4 +4,5 @@ class Owner < ActiveRecord::Base
   has_secure_password
 
   validates :email, :presence => true
+  validates :owner_name, :presence => true
 end

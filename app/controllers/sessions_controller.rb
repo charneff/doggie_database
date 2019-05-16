@@ -18,4 +18,9 @@ class SessionsController < ApplicationController
     redirect '/'
   end
 
+  post'/logout' do
+    logout!
+    redirect '/'
+  end 
+
 end
